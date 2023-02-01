@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: jpetstore-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:5.7
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: brandon
+          volumeMounts:
+            - name: mysql-init-db
+              mountPath: /docker-entrypoint-initdb.d
+            - name: mysql-pv-volume # pvc 
+              mountPath: /var/lib/mysql
+          # command: ["/bin/sh", "-c", "mysql < /docker-entrypoint-initdb.d/init.sql"]
+
+          resources: 
+            limits:
+              cpu: 1000m
+              memory: 512Mi
+      volumes:
+        - name: mysql-pv-volume # pv 
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim # pvc
+        - name: mysql-init-db
+          configMap:
+            name: mysql-init-config
