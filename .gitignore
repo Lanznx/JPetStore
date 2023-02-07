@@ -9,4 +9,4 @@
 *.releaseBackup
 *.properties
 .env
-secret.*
+secret.sh
