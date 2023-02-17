@@ -11,8 +11,9 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/mnt/jpetstore/data"
+  nfs:
+    server: 140.119.19.25
+    path: /jpetstore
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -25,4 +26,4 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: 5Gi
