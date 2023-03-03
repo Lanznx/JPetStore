@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jpetstore-backend-deployment
-  namespace: jpetstore-dev
+  namespace: jpetstore
 spec:
   selector:
     matchLabels:

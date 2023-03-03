@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mysql-init-config
-  namespace: jpetstore-dev
+  namespace: jpetstore
 data:
   init.sql: |
     CREATE DATABASE IF NOT EXISTS jpetstore;
