@@ -13,16 +13,3 @@ spec:
     - ReadWriteOnce
   hostPath: 
     path: /mnt/jpetstore/data
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mysql-pv-claim 
-  namespace: jpetstore
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi

@@ -14,16 +14,3 @@ spec:
   nfs:
     server: 140.119.19.25
     path: /jpetstore
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mysql-pv-claim 
-  namespace: jpetstore
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
