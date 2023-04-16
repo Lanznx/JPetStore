@@ -11,6 +11,5 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
-  nfs:
-    server: 140.119.19.25
-    path: /jpetstore
+  hostPath: 
+    path: /mnt/jpetstore/data
