@@ -12,5 +12,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    server: 140.119.19.25
+    server: 140.119.163.227
     path: /jpetstore
