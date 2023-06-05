@@ -2,7 +2,7 @@
 
 ## GKE 架設說明 (Google Kubernetes Engine)
 
-## Prometheus 架設說明 (頤賢）
+## Prometheus 以及 Grafana 架設說明 (頤賢）
 
 ## Prometheus 使用說明 (德晏）
 1. 列出使用的 promql 以及希望搜集的指標、指標代表依據
