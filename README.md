@@ -2,7 +2,7 @@
 
 ## GKE 架設說明 (Google Kubernetes Engine)
 
-## Promethesu 架設說明
+## Prometheus 架設說明
 
 ## K6 壓力測試說明
 
