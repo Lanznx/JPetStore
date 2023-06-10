@@ -11,10 +11,9 @@
 ## K6 壓力測試說明
 1. 如何安裝
 
-建立一個新資料夾，並透過git clone <網址>將jpetstore更新進該資料夾內
+建立一個新資料夾，並透過git clone <網址>將jpetstore更新進該資料夾內 \
 接著在同一個資料夾下載k6
 
-下載k6
 **Linux**
 
 ```
@@ -32,13 +31,13 @@ docker pull grafana/k6
 
 2. 如何使用（打哪些指令可以跑或是輸出 output）
 
-在k6資料夾內新增一個samples資料夾
-並在samples內新增script.js
+在k6資料夾內新增一個samples資料夾 \
+並在samples內新增script.js檔案 \
 裡面打上壓力測試的設定
 
 3. grafana、influxdb 安裝
 
-範例
+**範例** \
 (我的k6資料夾位於wsl中的/mnt/c/distriFinal資料夾內)
 ```
 docker-compose up -d influxdb grafana
