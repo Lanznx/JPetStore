@@ -48,7 +48,7 @@ k6 run script.js
 ```
 hostname -I
 ```
-在輸入以下指令後，k6會將測試結果輸入進influxdb當中 並由grafana進行呈現 \
+* 在輸入以下指令後，k6會將測試結果輸入進influxdb當中 並由grafana進行呈現
 ``` diff
 # (我的k6資料夾位於wsl中的/mnt/c/distriFinal資料夾內)
 docker-compose up -d influxdb grafana
