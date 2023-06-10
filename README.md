@@ -1,8 +1,60 @@
 # 分散式系統 操作說明
 
 ## GKE 架設說明 (Google Kubernetes Engine)
+1. Create gke cluster, you can use GUI on google cloud platform or read following document to create cluster by command line
+
+- [Deploy an app to a GKE cluster](https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster#create_cluster)
+- [Deploy an app in a container image to a GKE cluster](https://cloud.google.com/kubernetes-engine/docs/quickstarts/deploy-app-container-image)
+- [Create an Autopilot cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-an-autopilot-cluster)
+
+2. open cloud shell and clone this repository
+```
+git clone https://github.com/ocar1053/JPetStore.git
+```
+3. open cloud editor and connect to cluster then apply yml file
+```
+cd .\JPetStore\k3s\config\
+kubectl apply -f ./namespace.yml
+kubectl create secret generic {SECRET_NAME} \
+--from-literal=MYSQL_USERNAME={MYSQL_USERNAME} \
+--from-literal=MYSQL_PASSWORD={MYSQL_PASSWORD} \
+--from-literal=MYSQL_URL={MYSQL_URL} \
+--namespace={NAME_SPACE}
+k3s kubectl apply -f ./ 
+
+```
+4. set load balancer to expose service public ip
+```
+kubectl expose deployment jpetstore-backend-deployment --type="LoadBalancer" -n jpetstore
+```
+5. Enter public ip in browser to access jpetstore
+
+![image](https://github.com/ocar1053/JPetStore/assets/64206644/6ecac045-92fb-4573-a93f-0a39d3d381e7)
+
 
 ## Prometheus 以及 Grafana 架設說明 (頤賢）
+
+1. open cloud shell and input following command
+```
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo update
+helm install prometheus prometheus-community/kube-prometheus-stack
+```
+2. create node port service
+```
+kubectl expose deployment prometheus-grafana --name my-np-service     --type NodePort --protocol TCP --port 80 --target-port 3000
+```
+3. set load balancer to expose service public ip
+```
+kubectl expose deployment prometheus-grafana --name granfana-service --type="LoadBalancer" --port 3087 --target-port 3000
+```
+
+4. Enter public ip in browser to access grafana
+
+![image](https://github.com/ocar1053/JPetStore/assets/64206644/c3b253f5-90ac-4a51-a325-157e416445ef)
+
+
 
 ## Prometheus 使用說明 (德晏）
 1. 列出使用的 promql 以及希望搜集的指標、指標代表依據
