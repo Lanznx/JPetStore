@@ -27,6 +27,9 @@ k3s kubectl apply -f ./
 ```
 kubectl expose deployment jpetstore-backend-deployment --type="LoadBalancer" -n jpetstore
 ```
+5. Enter public ip in browser to access jpetstore
+![image](https://github.com/ocar1053/JPetStore/assets/64206644/6ecac045-92fb-4573-a93f-0a39d3d381e7)
+
 
 ## Prometheus 以及 Grafana 架設說明 (頤賢）
 
@@ -47,6 +50,8 @@ kubectl expose deployment prometheus-grafana --name granfana-service --type="Loa
 ```
 
 4. Enter public ip in browser to access grafana
+
+![image](https://github.com/ocar1053/JPetStore/assets/64206644/c3b253f5-90ac-4a51-a325-157e416445ef)
 
 
 
