@@ -28,6 +28,7 @@ k3s kubectl apply -f ./
 kubectl expose deployment jpetstore-backend-deployment --type="LoadBalancer" -n jpetstore
 ```
 5. Enter public ip in browser to access jpetstore
+
 ![image](https://github.com/ocar1053/JPetStore/assets/64206644/6ecac045-92fb-4573-a93f-0a39d3d381e7)
 
 
