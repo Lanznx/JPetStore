@@ -113,6 +113,25 @@ k6 run script.js
 ```
 便可以成功執行測試
 
-3. grafana、influxdb 安裝
+3. InfluxDB、Grafana 安裝
+
+* 進入 k6 資料夾
+* 建立 docker-compose.yaml
+* 更改 k6 底下的 volumes，設定腳本的本地路徑以及在 docker 上的路徑
+```
+volumes:
+    - ./samples:/scripts
+```
+* 安裝 InfluxDB、Grafana
+```
+docker-compose up -d influxdb grafana
+```
 
 4. 串接、視覺化資料的過程
+* 在 docker 上運行腳本，/scripts/script.js 為選定的腳本路徑
+```
+docker-compose run k6 run /scripts/script.js 
+```
+* 至 InfluxDB 網址查看視覺化圖表結果
+
+
