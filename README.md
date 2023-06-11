@@ -94,7 +94,6 @@ k6 run script.js
 
 3. grafana、influxdb 安裝
 
-
 * **範例** \
 首先要透過以下指令取得主機的IP地址，並將地址填入docker-compose的指令當中 \
 這樣才能成功將測試資料發進網站
