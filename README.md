@@ -67,7 +67,7 @@ sum(rate(container_cpu_usage_seconds_total{namespace="jpetstore"}[30s])) by (nam
 ```
 max(container_memory_working_set_bytes/on(container, pod) kube_pod_container_resource_limit{resource="memory"})
 ```
-3. Number of HTTP Requests/Responses towards JPetStore Pods
+3. Number of HTTP Requests/Responses
 ```
 irate(prometheus_http_response_size_bytes_sum[1m])
 ```
