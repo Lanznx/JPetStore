@@ -94,4 +94,18 @@ k6 run script.js
 
 3. grafana、influxdb 安裝
 
+
+* **範例** \
+首先要透過以下指令取得主機的IP地址，並將地址填入docker-compose的指令當中 \
+這樣才能成功將測試資料發進網站
+```
+hostname -I
+```
+* 在輸入以下指令後，k6會將測試結果輸入進influxdb當中 並由grafana進行呈現
+``` diff
+# (我的k6資料夾位於wsl中的/mnt/c/distriFinal資料夾內)
+docker-compose up -d influxdb grafana
+docker-compose run -v /mnt/c/distriFinal/jpetstore-6/k6/samples:/scripts/samples k6 run -e JPETSTORE_IP=<自己的主機IP> /scripts/samples/script.js
+```
+
 4. 串接、視覺化資料的過程
