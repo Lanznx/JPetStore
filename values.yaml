@@ -150,7 +150,7 @@ additionalPrometheusRules:
       - name: jpetstore-alert-rules
         rules:
           - alert: HighCpuLoad
-            expr: sum(rate(container_cpu_usage_seconds_total{namespace="jpetstore"}[30s])) by (namespace) > 0.8
+            expr: sum(rate(container_cpu_usage_seconds_total{namespace="jpetstore"}[1m])) by (namespace) > 0.8
             for: 10s
             labels:
               severity: critical
@@ -169,7 +169,7 @@ additionalPrometheusRules:
             expr: irate(prometheus_http_response_size_bytes_sum[1m]) > 10000
             for: 1m
             labels:
-              severity: "critical"
+              severity: critical
             annotations: 
               summary: "Anomolous HTTP Requests"
               decription: "Receiving over 10000 HTTP Requests in a minute."
@@ -260,27 +260,27 @@ alertmanager:
       resolve_timeout: 5m
       slack_api_url: 'https://hooks.slack.com/services/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'
       
-    # inhibit_rules:
-    #   - source_matchers:
-    #       - 'severity = critical'
-    #     target_matchers:
-    #       - 'severity =~ warning|info'
-    #     equal:
-    #       - 'namespace'
-    #       - 'alertname'
-    #   - source_matchers:
-    #       - 'severity = warning'
-    #     target_matchers:
-    #       - 'severity = info'
-    #     equal:
-    #       - 'namespace'
-    #       - 'alertname'
-    #   - source_matchers:
-    #       - 'alertname = InfoInhibitor'
-    #     target_matchers:
-    #       - 'severity = info'
-    #     equal:
-    #       - 'namespace'
+    inhibit_rules:
+      - source_matchers:
+          - 'severity = critical'
+        target_matchers:
+          - 'severity =~ warning|info'
+        equal:
+          - 'namespace'
+          - 'alertname'
+      - source_matchers:
+          - 'severity = warning'
+        target_matchers:
+          - 'severity = info'
+        equal:
+          - 'namespace'
+          - 'alertname'
+      - source_matchers:
+          - 'alertname = InfoInhibitor'
+        target_matchers:
+          - 'severity = info'
+        equal:
+          - 'namespace'
     route:
       group_by: ['job']
       group_wait: 30s
@@ -880,27 +880,27 @@ alertmanagerFiles:
       resolve_timeout: 5m
       slack_api_url: 'https://hooks.slack.com/services/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'
       
-    # inhibit_rules:
-    #   - source_matchers:
-    #       - 'severity = critical'
-    #     target_matchers:
-    #       - 'severity =~ warning|info'
-    #     equal:
-    #       - 'namespace'
-    #       - 'alertname'
-    #   - source_matchers:
-    #       - 'severity = warning'
-    #     target_matchers:
-    #       - 'severity = info'
-    #     equal:
-    #       - 'namespace'
-    #       - 'alertname'
-    #   - source_matchers:
-    #       - 'alertname = InfoInhibitor'
-    #     target_matchers:
-    #       - 'severity = info'
-    #     equal:
-    #       - 'namespace'
+    inhibit_rules:
+      - source_matchers:
+          - 'severity = critical'
+        target_matchers:
+          - 'severity =~ warning|info'
+        equal:
+          - 'namespace'
+          - 'alertname'
+      - source_matchers:
+          - 'severity = warning'
+        target_matchers:
+          - 'severity = info'
+        equal:
+          - 'namespace'
+          - 'alertname'
+      - source_matchers:
+          - 'alertname = InfoInhibitor'
+        target_matchers:
+          - 'severity = info'
+        equal:
+          - 'namespace'
     route:
       group_by: ['job']
       group_wait: 30s
