@@ -150,13 +150,13 @@ additionalPrometheusRules:
       - name: jpetstore-alert-rules
         rules:
           - alert: HighCpuLoad
-            expr: sum(rate(container_cpu_usage_seconds_total{namespace="jpetstore"}[5m])) by (namespace) > 0.6
+            expr: sum(rate(container_cpu_usage_seconds_total{namespace="jpetstore"}[30s])) by (namespace) > 0.8
             for: 10s
             labels:
               severity: critical
             annotations:
               summary: "High CPU usage"
-              description: "The maximum CPU usage of the pod is over 60% of its limit."
+              description: "The maximum CPU usage of the pod is over 80% of its limit."
           - alert: HighMemoryUsage
             expr: max(container_memory_working_set_bytes/on(container, pod) kube_pod_container_resource_limits{resource="memory"}) > 0.6
             for: 10s
