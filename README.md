@@ -57,8 +57,29 @@ kubectl expose deployment prometheus-grafana --name granfana-service --type="Loa
 
 
 ## Prometheus 使用說明 (德晏）
-1. 列出使用的 promql 以及希望搜集的指標、指標代表依據
-2. alert manager 實作過程
+### PromQL
+There are three main target metrics for us to monitor: 
+1. CPU Usage of JPetStore Pods
+```
+sum(rate(container_cpu_usage_seconds_total{namespace="jpetstore"}[30s])) by (namespace)
+```
+2. Memory Usage
+```
+max(container_memory_working_set_bytes/on(container, pod) kube_pod_container_resource_limit{resource="memory"})
+```
+3. Number of HTTP Requests/Responses
+```
+irate(prometheus_http_response_size_bytes_sum[1m])
+```
+
+### Alertmanager
+1. Set additional monitoring rules for prometheus in values.yaml, according to our target metrics.
+2. Set alertmanager routes, includings alert rules in values.yaml.
+3. update helm charts
+```
+helm upgrade prometheus prometheus-community/kube-prometheus-stack -f values.yaml
+```
+
 
 ## K6 壓力測試說明
 1. 如何安裝
