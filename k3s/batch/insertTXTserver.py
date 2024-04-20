@@ -15,10 +15,6 @@ MYSQL_URL = os.getenv("MYSQL_URL")
 MYSQL_USERNAME = os.getenv("MYSQL_USERNAME")
 MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
 
-print(f"MYSQL_URL: {MYSQL_URL}")
-print(f"MYSQL_USERNAME: {MYSQL_USERNAME}")
-print(f"MYSQL_PASSWORD: {MYSQL_PASSWORD}")
-
 def connect_to_database():
     try:
         jdbc_url = MYSQL_URL
