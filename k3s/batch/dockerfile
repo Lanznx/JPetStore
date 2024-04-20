@@ -1,0 +1,5 @@
+FROM  python:3.9-slim
+COPY ./ /workspace
+WORKDIR /workspace
+RUN ["python3", "generateTXT.py"]
+RUN pip3 install -r requirements.txt

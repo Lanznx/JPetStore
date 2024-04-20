@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  batch-worker:
+    container_name: batch-worker
+    build:
+      context: .
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    command: python3 insertTXTserver.py
