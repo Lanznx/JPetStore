@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: jpetstore-backend
-          image: lanznx/batch-worker:5.0
+          image: lanznx/batch-worker:6.0
           env:
             - name: MYSQL_USERNAME
               valueFrom:
