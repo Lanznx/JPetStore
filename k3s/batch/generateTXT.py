@@ -14,7 +14,10 @@ def create_large_text_file(file_path, target_size, line_length=100):
             total_bytes += len(line.encode('utf-8')) + 1 
 
 if __name__ == "__main__":
-    create_large_text_file('2MB.txt', 2*1024*1024)
     create_large_text_file('16MB.txt', 16*1024*1024)
+    create_large_text_file('32MB.txt', 32*1024*1024)
+    create_large_text_file('64MB.txt', 64*1024*1024)
     create_large_text_file('128MB.txt', 128*1024*1024)
+    create_large_text_file('256MB.txt', 256*1024*1024)
     create_large_text_file('512MB.txt', 512*1024*1024)
+    create_large_text_file('1024MB.txt', 1024*1024*1024)
