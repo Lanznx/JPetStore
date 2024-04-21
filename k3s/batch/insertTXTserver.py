@@ -68,6 +68,10 @@ def batch_insert_data(data, batch_size=1000):
     return end_time - start_time
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.socket.settimeout(10000)  # Timeout in seconds
+
     def do_GET(self):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
