@@ -17,3 +17,4 @@ if __name__ == "__main__":
     create_large_text_file('2MB.txt', 2*1024*1024)
     create_large_text_file('16MB.txt', 16*1024*1024)
     create_large_text_file('128MB.txt', 128*1024*1024)
+    create_large_text_file('512MB.txt', 512*1024*1024)
